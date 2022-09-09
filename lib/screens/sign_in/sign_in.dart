@@ -14,21 +14,23 @@ class SignIn extends StatefulWidget {
 class _SignInState extends State<SignIn> {
   @override
   Widget build(BuildContext context) {
-    return Column(
-      children: [
-        // shows header title
-        HeroTitle(
-          title: 'Vision onWay!',
-          subtitle: 'Fitness application...',
-        ),
-        // shows image
-        HeroImage(
-          path: 'assets/loginHero.svg',
-          sementicLabel: 'Login Hero',
-        ),
-        // shows textfields and buttons
-        SignInForm(),
-      ],
+    return SingleChildScrollView(
+      child: Column(
+        children: [
+          // shows header title
+          HeroTitle(
+            title: 'Vision onWay!',
+            subtitle: 'Fitness application...',
+          ),
+          // shows image
+          HeroImage(
+            path: 'assets/loginHero.svg',
+            sementicLabel: 'Login Hero',
+          ),
+          // shows textfields and buttons
+          SignInForm(),
+        ],
+      ),
     );
   }
 }

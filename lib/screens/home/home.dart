@@ -22,7 +22,7 @@ class Home extends StatelessWidget {
               children: [
                 CircleAvatar(
                   radius: 50.0,
-                  backgroundImage: AssetImage('Profile.jpg'),
+                  backgroundImage: AssetImage('assets/Profile.jpg'),
                 ),
                 SizedBox(
                   height: 50.0,
