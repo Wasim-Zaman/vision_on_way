@@ -67,7 +67,7 @@ class Home extends StatelessWidget {
 
                     Navigator.of(context).push(MaterialPageRoute(
                       builder: (context) => WalkingScreen(),
-                    ));
+                    ),);
                   },
                   padding: EdgeInsets.symmetric(
                     horizontal: Config.screenWidth! * 0.3,

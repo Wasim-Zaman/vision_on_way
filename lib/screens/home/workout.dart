@@ -1,7 +1,89 @@
-import 'package:flutter/material.dart';
-import 'package:sign_in/widgets/audio_player.dart';
+import 'dart:async';
 
-class Workout extends StatelessWidget {
+import 'package:flutter/material.dart';
+import 'package:video_player/video_player.dart';
+
+class Workout extends StatefulWidget {
+  @override
+  State<Workout> createState() => _WorkoutState();
+}
+
+class _WorkoutState extends State<Workout> {
+  late VideoPlayerController _controller;
+  late Future<void> _initializeVideoPlayerFuture;
+
+  @override
+  void initState() {
+    super.initState();
+    // Create and store the VideoPlayerController. The VideoPlayerController
+    // offers several different constructors to play videos from assets, files,
+    // or the internet.
+    _controller = VideoPlayerController.asset("assets/butterfly.mp4");
+
+    // Initialize the controller and store the Future for later use.
+    _initializeVideoPlayerFuture = _controller.initialize();
+
+    // Use the controller to loop the video.
+    _controller.setLooping(true);
+  }
+
+  @override
+  void dispose() {
+    // Ensure disposing of the VideoPlayerController to free up resources.
+    _controller.dispose();
+
+    super.dispose();
+  }
+
+  DialogBox() {
+    showDialog(
+      context: context,
+      builder: (context) => AlertDialog(
+        title: Container(
+          width: 200,
+          height: 200,
+          child: VideoPlayer(_controller),
+        ),
+        actions: <Widget>[
+          IconButton(
+            icon: _controller.value.isPlaying
+                ? Icon(Icons.pause)
+                : Icon(Icons.play_arrow),
+            onPressed: () {
+              // Wrap the play or pause in a call to `setState`. This ensures the
+              // correct icon is shown.
+              setState(
+                () {
+                  // If the video is playing, pause it.
+                  if (_controller.value.isPlaying) {
+                    _controller.pause();
+                  } else {
+                    // If the video is paused, play it.
+                    _controller.play();
+                  }
+                },
+              );
+            },
+          ),
+          IconButton(
+            onPressed: () {
+              setState(() {
+                _controller.pause();
+              });
+              Navigator.of(context).pop();
+            },
+            icon: Icon(Icons.close),
+          ),
+        ],
+      ),
+    );
+  }
+
+  @override
+  void setState(VoidCallback fn) {
+    super.setState(fn);
+  }
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -41,12 +123,7 @@ class Workout extends StatelessWidget {
                   InkWell(
                     splashColor: Colors.purple[200],
                     onTap: () {
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                          builder: (context) => MyAudioPlayer(),
-                        ),
-                      );
+                      DialogBox();
                     },
                     child: Card(
                       color: Color.fromARGB(255, 249, 238, 253),
@@ -77,12 +154,7 @@ class Workout extends StatelessWidget {
                   InkWell(
                     splashColor: Colors.purple[200],
                     onTap: () {
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                          builder: (context) => MyAudioPlayer(),
-                        ),
-                      );
+                      DialogBox();
                     },
                     child: Card(
                       color: Color.fromARGB(255, 249, 238, 253),
@@ -113,12 +185,7 @@ class Workout extends StatelessWidget {
                   InkWell(
                     splashColor: Colors.purple[200],
                     onTap: () {
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                          builder: (context) => MyAudioPlayer(),
-                        ),
-                      );
+                      DialogBox();
                     },
                     child: Card(
                       color: Color.fromARGB(255, 249, 238, 253),
@@ -149,12 +216,7 @@ class Workout extends StatelessWidget {
                   InkWell(
                     splashColor: Colors.purple[200],
                     onTap: () {
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                          builder: (context) => MyAudioPlayer(),
-                        ),
-                      );
+                      DialogBox();
                     },
                     child: Card(
                       color: Color.fromARGB(255, 249, 238, 253),
@@ -185,12 +247,7 @@ class Workout extends StatelessWidget {
                   InkWell(
                     splashColor: Colors.purple[200],
                     onTap: () {
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                          builder: (context) => MyAudioPlayer(),
-                        ),
-                      );
+                      DialogBox();
                     },
                     child: Card(
                       color: Color.fromARGB(255, 249, 238, 253),

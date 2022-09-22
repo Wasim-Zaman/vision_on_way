@@ -21,8 +21,8 @@ dependencies:
   google_fonts: ^2.0.0
   google_sign_in: ^5.1.0
   sign_button: ^2.0.1
-  camera: ^0.10.0+1           # for displaying the camera...
-  audioplayers: ^0.20.1
+  camera: ^0.10.0+1           #for displaying the camera...
+  video_player: ^2.4.7        #for displaying videos...
 
 dev_dependencies:
   flutter_test:
