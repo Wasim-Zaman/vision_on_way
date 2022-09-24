@@ -18,7 +18,7 @@ class _WorkoutState extends State<Workout> {
     // Create and store the VideoPlayerController. The VideoPlayerController
     // offers several different constructors to play videos from assets, files,
     // or the internet.
-    _controller = VideoPlayerController.asset("assets/butterfly.mp4");
+    _controller = VideoPlayerController.asset("assets/my_video.mp4");
 
     // Initialize the controller and store the Future for later use.
     _initializeVideoPlayerFuture = _controller.initialize();
@@ -46,23 +46,23 @@ class _WorkoutState extends State<Workout> {
         ),
         actions: <Widget>[
           IconButton(
-            icon: _controller.value.isPlaying
-                ? Icon(Icons.pause)
-                : Icon(Icons.play_arrow),
+            icon: Icon(Icons.play_arrow),
             onPressed: () {
               // Wrap the play or pause in a call to `setState`. This ensures the
               // correct icon is shown.
-              setState(
-                () {
-                  // If the video is playing, pause it.
-                  if (_controller.value.isPlaying) {
-                    _controller.pause();
-                  } else {
-                    // If the video is paused, play it.
-                    _controller.play();
-                  }
-                },
-              );
+              setState(() {
+                _controller.play();
+              });
+            },
+          ),
+          IconButton(
+            icon: Icon(Icons.pause),
+            onPressed: () {
+              // Wrap the play or pause in a call to `setState`. This ensures the
+              // correct icon is shown.
+              setState(() {
+                _controller.pause();
+              });
             },
           ),
           IconButton(
@@ -72,16 +72,16 @@ class _WorkoutState extends State<Workout> {
               });
               Navigator.of(context).pop();
             },
-            icon: Icon(Icons.close),
+            icon: InkWell(
+              onTap: () {
+                Navigator.of(context).pop();
+              },
+              child: Text("Close"),
+            ),
           ),
         ],
       ),
     );
-  }
-
-  @override
-  void setState(VoidCallback fn) {
-    super.setState(fn);
   }
 
   @override
