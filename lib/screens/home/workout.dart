@@ -45,39 +45,44 @@ class _WorkoutState extends State<Workout> {
           child: VideoPlayer(_controller),
         ),
         actions: <Widget>[
-          IconButton(
-            icon: Icon(Icons.play_arrow),
-            onPressed: () {
-              // Wrap the play or pause in a call to `setState`. This ensures the
-              // correct icon is shown.
-              setState(() {
-                _controller.play();
-              });
-            },
-          ),
-          IconButton(
-            icon: Icon(Icons.pause),
-            onPressed: () {
-              // Wrap the play or pause in a call to `setState`. This ensures the
-              // correct icon is shown.
-              setState(() {
-                _controller.pause();
-              });
-            },
-          ),
-          IconButton(
-            onPressed: () {
-              setState(() {
-                _controller.pause();
-              });
-              Navigator.of(context).pop();
-            },
-            icon: InkWell(
-              onTap: () {
-                Navigator.of(context).pop();
-              },
-              child: Text("Close"),
-            ),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              IconButton(
+                icon: Icon(Icons.play_arrow),
+                onPressed: () {
+                  // Wrap the play or pause in a call to `setState`. This ensures the
+                  // correct icon is shown.
+                  setState(() {
+                    _controller.play();
+                  });
+                },
+              ),
+              IconButton(
+                icon: Icon(Icons.pause),
+                onPressed: () {
+                  // Wrap the play or pause in a call to `setState`. This ensures the
+                  // correct icon is shown.
+                  setState(() {
+                    _controller.pause();
+                  });
+                },
+              ),
+              IconButton(
+                onPressed: () {
+                  setState(() {
+                    _controller.pause();
+                  });
+                  Navigator.of(context).pop();
+                },
+                icon: InkWell(
+                  onTap: () {
+                    Navigator.of(context).pop();
+                  },
+                  child: Text("Close"),
+                ),
+              ),
+            ],
           ),
         ],
       ),
